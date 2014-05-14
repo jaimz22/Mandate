@@ -1,0 +1,21 @@
+{
+    "name": "vertigolabs/command-runner",
+    "description": "Run a bunch of commands",
+    "version": "0.0.1",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Murray",
+            "email": "jaimz@vertigolabs.org"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "classmap": ["Commands/","Handlers/"],
+        "psr-4": {
+            "VertigoLabs\\CommandRunner\\": "src/"
+        }
+    }
+}
