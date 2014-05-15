@@ -33,9 +33,11 @@ class CommandRunner
 		$this->commandQueue->rewind();
 		while($this->commandQueue->count() > 0) {
 			$command = $this->commandQueue->extract();
+			/** @var Handler $handler */
 			foreach($command->yieldHandlers() as $handler) {
 				try{
 					$handler->handle($command);
+					$artifacts = $handler->getArtifacts();
 					$command->performSuccessCallback();
 				}catch (\Exception $e){
 					$command->performFailureCallback($e);
