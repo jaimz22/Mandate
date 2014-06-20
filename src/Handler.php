@@ -16,7 +16,7 @@ namespace VertigoLabs\Mandate;
  */
 abstract class Handler
 {
-	private $artifacts;
+	private $artifacts = [];
 
 	abstract public function handle(Command $command);
 
