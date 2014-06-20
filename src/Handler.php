@@ -6,11 +6,11 @@
  * @time: 12:08 PM
  */
 
-namespace VertigoLabs\CommandRunner;
+namespace VertigoLabs\Mandate;
 
 /**
  * Class Handler
- * @package VertigoLabs\CommandRunner
+ * @package VertigoLabs\Mandate
  *
  * @property array artifacts
  */

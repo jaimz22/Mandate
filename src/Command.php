@@ -6,7 +6,7 @@
  * @time: 11:37 AM
  */
 
-namespace VertigoLabs\CommandRunner;
+namespace VertigoLabs\Mandate;
 
 
 abstract class Command
@@ -23,26 +23,63 @@ abstract class Command
 	 * @var callable
 	 */
 	private $failure;
+	/**
+	 * @var array
+	 */
+	private $boundArtifacts = [];
+	private $boundWait = [];
 
 	public function addHandler(Handler $handler)
 	{
-		if (!($this->handlers instanceof \SplQueue)) {
+		if(!($this->handlers instanceof \SplQueue)){
 			$this->handlers = new \SplQueue();
-			$this->handlers->setIteratorMode(\SplQueue::IT_MODE_FIFO|\SplQueue::IT_MODE_DELETE);
+			$this->handlers->setIteratorMode(\SplQueue::IT_MODE_FIFO | \SplQueue::IT_MODE_DELETE);
 		}
 		$this->handlers->enqueue($handler);
 		return $this;
 	}
 
+	/**
+	 * @return Handler
+	 * @throws \Exception
+	 */
 	public function yieldHandlers()
 	{
-		if (!($this->handlers instanceof \SplQueue)) {
+		if(!($this->handlers instanceof \SplQueue)){
 			throw new \Exception('Commands can not be executed without a handler');
 		}
-		while($this->handlers->count() > 0)
-		{
+		while($this->handlers->count() > 0){
 			yield $this->handlers->dequeue();
 		}
+	}
+
+	public function bindArtifact($property, $artifactName, $waitForAvailability = false)
+	{
+		$this->boundArtifacts[$property] = $artifactName;
+		$this->boundWait[$artifactName] = $waitForAvailability;
+		return $this;
+	}
+
+	public function getArtifactWaitList()
+	{
+		return array_keys(array_filter($this->boundWait));
+	}
+
+	/**
+	 * @param Artifact[] $artifacts
+	 */
+	public function setArtifacts($artifacts)
+	{
+		$boundArtifacts = array_flip($this->boundArtifacts);
+		$availableArtifacts = array_intersect_key($boundArtifacts,$artifacts);
+		foreach($availableArtifacts as $artifactName=>$propertyName) {
+			$this->boundArtifacts[$propertyName] = $artifacts[$artifactName]->getValue();
+		}
+	}
+
+	public function getArtifactBindings()
+	{
+		return $this->boundArtifacts;
 	}
 
 	public function performSuccessCallback()
@@ -73,6 +110,9 @@ abstract class Command
 
 	public function __get($field)
 	{
+		if (array_key_exists($field,$this->boundArtifacts)) {
+			return $this->boundArtifacts[$field];
+		}
 		return $this->$field;
 	}
 } 

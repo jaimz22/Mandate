@@ -6,7 +6,7 @@
  * @time: 9:31 AM
  */
 
-namespace VertigoLabs\CommandRunner;
+namespace VertigoLabs\Mandate;
 
 
 class Artifact
@@ -16,5 +16,15 @@ class Artifact
 	{
 		$this->name = $name;
 		$this->value = $value;
+	}
+
+	public function getName()
+	{
+		return $this->name;
+	}
+
+	public function getValue()
+	{
+		return $this->value;
 	}
 } 
