@@ -13,7 +13,6 @@
 
     },
     "autoload": {
-        "classmap": ["Commands/","Handlers/"],
         "psr-4": {
             "VertigoLabs\\Mandate\\": "src/"
         }
