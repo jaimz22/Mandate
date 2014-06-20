@@ -1,5 +1,5 @@
 {
-    "name": "vertigolabs/command-runner",
+    "name": "vertigolabs/mandate",
     "description": "Run a bunch of commands",
     "version": "0.0.1",
     "license": "MIT",
@@ -15,7 +15,7 @@
     "autoload": {
         "classmap": ["Commands/","Handlers/"],
         "psr-4": {
-            "VertigoLabs\\CommandRunner\\": "src/"
+            "VertigoLabs\\Mandate\\": "src/"
         }
     }
 }
