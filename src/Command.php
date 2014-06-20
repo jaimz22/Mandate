@@ -113,6 +113,16 @@ abstract class Command
 		if (array_key_exists($field,$this->boundArtifacts)) {
 			return $this->boundArtifacts[$field];
 		}
-		return $this->$field;
+		if (property_exists($this,$field)) {
+			$reader = function & ($object, $property) {
+				$value = & \Closure::bind(function & () use ($property) {
+					return $this->$property;
+				}, $object, $object)->__invoke();
+
+				return $value;
+			};
+			return $reader($this,$field);
+		}
+		return null;
 	}
 } 
