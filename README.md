@@ -1,4 +1,4 @@
-CommandRunner
+Mandate
 =============
 
 A command queue
