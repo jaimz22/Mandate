@@ -1,6 +1,7 @@
 Mandate
 =============
 [![Build Status](https://travis-ci.org/jaimz22/Mandate.svg?branch=master)](https://travis-ci.org/jaimz22/Mandate)
+[![Coverage Status](https://coveralls.io/repos/jaimz22/Mandate/badge.png)](https://coveralls.io/r/jaimz22/Mandate)
 
 A command queue that supports command priority, chaining of commands, multiple handlers per command and artifacts
 
