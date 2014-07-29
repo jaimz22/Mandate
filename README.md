@@ -1,5 +1,6 @@
 Mandate
 =============
+[![Build Status](https://travis-ci.org/jaimz22/Mandate.svg?branch=master)](https://travis-ci.org/jaimz22/Mandate)
 
 A command queue that supports command priority, chaining of commands, multiple handlers per command and artifacts
 
