@@ -29,7 +29,7 @@ abstract class Handler
 	protected function emitArtifact($name,$value)
 	{
 		if (!array_key_exists($name,$this->artifacts)) {
-			throw new \Exception('can not emit unregister artifact "'.$name.'"');
+			throw new \Exception('can not emit unregistered artifact "'.$name.'"');
 		}
 		$artifact = new Artifact($name,$value);
 		$this->artifacts[$name] = $artifact;
