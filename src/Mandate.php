@@ -7,7 +7,7 @@
  *
  * DISCLAIMER: This software is provided free of charge, and may be distributed.
  * It is not the fault of the author if this software causes damages, loss of data
- * loss of life, pregnant girlfriends, deep horrible depression, cupcakes, good times
+ * loss of life, pregnant girlfriends, deep horrible depression, cupcakes, or good times
  * with friends.
  */
 
@@ -21,8 +21,7 @@ class Mandate
 
 	public function __construct()
 	{
-		$this->commandQueue = new \SplPriorityQueue();
-		$this->commandQueue->setExtractFlags(\SplPriorityQueue::EXTR_BOTH);
+		$this->clearQueue();
 	}
 
 	public function queue(Command $command,$priority=null)
@@ -32,6 +31,17 @@ class Mandate
 		}
 		$this->commandQueue->insert($command,$priority);
 		return $this;
+	}
+
+	public function getQueueCount()
+	{
+		return $this->commandQueue->count();
+	}
+
+	public function clearQueue()
+	{
+		$this->commandQueue = new \SplPriorityQueue();
+		$this->commandQueue->setExtractFlags(\SplPriorityQueue::EXTR_BOTH);
 	}
 
 	public function execute()

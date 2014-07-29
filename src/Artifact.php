@@ -7,7 +7,7 @@
  *
  * DISCLAIMER: This software is provided free of charge, and may be distributed.
  * It is not the fault of the author if this software causes damages, loss of data
- * loss of life, pregnant girlfriends, deep horrible depression, cupcakes, good times
+ * loss of life, pregnant girlfriends, deep horrible depression, cupcakes, or good times
  * with friends.
  */
 

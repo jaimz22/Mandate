@@ -7,7 +7,7 @@
  *
  * DISCLAIMER: This software is provided free of charge, and may be distributed.
  * It is not the fault of the author if this software causes damages, loss of data
- * loss of life, pregnant girlfriends, deep horrible depression, cupcakes, good times
+ * loss of life, pregnant girlfriends, deep horrible depression, cupcakes, or good times
  * with friends.
  */
 
@@ -43,12 +43,12 @@ abstract class Handler
 	/**
 	 * @param null|string|array $name
 	 *
-	 * @return mixed
+	 * @return Artifact|Artifact[]
 	 */
 	public function getArtifacts($name=null)
 	{
 		if (is_array($name)) {
-			return array_intersect_assoc($this->artifacts,$name);
+			return array_intersect_key($this->artifacts,array_flip($name));
 		}
 		if (!is_null($name) && array_key_exists($name,$this->artifacts)){
 			return $this->artifacts[$name];
