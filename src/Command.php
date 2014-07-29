@@ -1,9 +1,14 @@
 <?php
 /**
- * @author: jaimz
- * @copyright:
+ * @author: James Murray <jaimz@vertigolabs.org>
+ * @copyright: James Murray 2014
  * @date: 5/14/14
  * @time: 11:37 AM
+ *
+ * DISCLAIMER: This software is provided free of charge, and may be distributed.
+ * It is not the fault of the author if this software causes damages, loss of data
+ * loss of life, pregnant girlfriends, deep horrible depression, cupcakes, good times
+ * with friends.
  */
 
 namespace VertigoLabs\Mandate;
