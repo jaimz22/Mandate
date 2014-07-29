@@ -9,8 +9,8 @@
             "email": "jaimz@vertigolabs.org"
         }
     ],
-    "require": {
-
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
     },
     "autoload": {
         "psr-4": {
