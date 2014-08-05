@@ -250,6 +250,7 @@ class SimpleTestCommand extends \VertigoLabs\Mandate\Command
 	{
 		$this->param1 = $param1;
 	}
+
 }
 
 /**
@@ -259,7 +260,7 @@ class SimpleTestCommand extends \VertigoLabs\Mandate\Command
  */
 class SimpleReverseTestHandler extends \VertigoLabs\Mandate\Handler
 {
-	public function handle(\VertigoLabs\Mandate\Command $command)
+	public function handle(\VertigoLabs\Mandate\Interfaces\CommandInterface $command)
 	{
 		if ($command->param1 === 'pleaseFail') {
 			throw new \InvalidArgumentException('you failed!');
@@ -279,7 +280,7 @@ class SimpleReverseTestHandler extends \VertigoLabs\Mandate\Handler
  */
 class SimpleUpperCaseTestHandler extends \VertigoLabs\Mandate\Handler
 {
-	public function handle(\VertigoLabs\Mandate\Command $command)
+	public function handle(\VertigoLabs\Mandate\Interfaces\CommandInterface $command)
 	{
 		$uppercase = strtoupper($command->param1);
 
@@ -295,7 +296,7 @@ class SimpleUpperCaseTestHandler extends \VertigoLabs\Mandate\Handler
  */
 class SimpleUpperCaseAndReverseTestHandler extends \VertigoLabs\Mandate\Handler
 {
-	public function handle(\VertigoLabs\Mandate\Command $command)
+	public function handle(\VertigoLabs\Mandate\Interfaces\CommandInterface $command)
 	{
 		$reverse = strrev($command->param1);
 		$uppercase = strtoupper($command->param1);

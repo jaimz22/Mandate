@@ -14,7 +14,10 @@
 namespace VertigoLabs\Mandate;
 
 
-abstract class Command
+use VertigoLabs\Mandate\Interfaces\ArtifactUsingCommandInterface;
+use VertigoLabs\Mandate\Interfaces\HandlerInterface;
+
+abstract class Command implements ArtifactUsingCommandInterface
 {
 	/**
 	 * @var \SplQueue
@@ -34,7 +37,7 @@ abstract class Command
 	private $boundArtifacts = [];
 	private $boundWait = [];
 
-	public function addHandler(Handler $handler)
+	public function addHandler(HandlerInterface $handler)
 	{
 		if(!($this->handlers instanceof \SplQueue)){
 			$this->handlers = new \SplQueue();
@@ -100,10 +103,10 @@ abstract class Command
 		return $this;
 	}
 
-	public function performFailureCallback($e)
+	public function performFailureCallback($exception)
 	{
 		if (is_callable($this->failure)) {
-			call_user_func($this->failure,$e,$this);
+			call_user_func($this->failure,$exception,$this);
 		}
 	}
 

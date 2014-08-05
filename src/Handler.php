@@ -13,17 +13,20 @@
 
 namespace VertigoLabs\Mandate;
 
+use VertigoLabs\Mandate\Interfaces\ArtifactEmittingHandlerInterface;
+use VertigoLabs\Mandate\Interfaces\CommandInterface;
+
 /**
  * Class Handler
  * @package VertigoLabs\Mandate
  *
  * @property array artifacts
  */
-abstract class Handler
+abstract class Handler implements ArtifactEmittingHandlerInterface
 {
 	private $artifacts = [];
 
-	abstract public function handle(Command $command);
+	abstract public function handle(CommandInterface $command);
 
 	public function produceArtifact($name)
 	{
